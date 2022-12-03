@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: echo-bio-cloud
+    annotations:
+        sidecar.opentelemetry.io/inject: "true"
     spec:
       containers:
       - name: echo-bio-cloud
