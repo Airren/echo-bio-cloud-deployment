@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-bio-cloud
+spec:
+  selector:
+    matchLabels:
+      app: echo-bio-cloud
+  template:
+    metadata:
+      labels:
+        app: echo-bio-cloud
+    spec:
+      containers:
+      - name: echo-bio-cloud
+        image: airren/echo-bio-cloud:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
