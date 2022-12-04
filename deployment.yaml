@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: echo-bio-cloud
-        image: airren/echo-bio-cloud:v0.0.6
+        image: airren/echo-bio-cloud:v0.0.8
         resources:
           limits:
             memory: "128Mi"
