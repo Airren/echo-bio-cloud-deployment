@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: echo-bio-cloud
-        image: airren/echo-bio-cloud:v0.0.22
+        image: airren/echo-bio-cloud:v0.0.27
         env:
           - name: ENV
             value: "prod"
