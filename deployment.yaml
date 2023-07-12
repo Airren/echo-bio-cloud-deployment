@@ -52,7 +52,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: echo-bio-cloud
-        image: airren/echo-bio-cloud:v0.0.36
+        image: airren/echo-bio-cloud:v0.0.37
         env:
           - name: ENV
             value: "prod"
