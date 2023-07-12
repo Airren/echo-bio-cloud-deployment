@@ -1,3 +1,31 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: echo-bio-role
+rules:
+- apiGroups: [""]
+  resources: ["jobs"]
+  verbs: ["create", "get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: echo-bio-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: echo-bio-role
+subjects:
+- kind: ServiceAccount
+  name: echo-bio-service-account
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: echo-bio-service-account
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,6 +42,8 @@ spec:
     #  annotations:
     #    sidecar.opentelemetry.io/inject: "true"
     spec:
+      serviceAccountName: echo-bio-service-account
+      automountServiceAccountToken: true
       containers:
       - name: echo-bio-cloud
         image: airren/echo-bio-cloud:v0.0.35
